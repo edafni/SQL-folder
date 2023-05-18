@@ -1,3 +1,7 @@
+DECLARE @TableName nvarchar(100)
+SET @TableName = '%Table_Name%'
+
+
 SELECT
     fk.name 'FK Name',
     tp.name 'Parent table',
@@ -16,5 +20,5 @@ INNER JOIN
     sys.columns cp ON fkc.parent_column_id = cp.column_id AND fkc.parent_object_id = cp.object_id
 INNER JOIN 
     sys.columns cr ON fkc.referenced_column_id = cr.column_id AND fkc.referenced_object_id = cr.object_id
-WHERE tp.name LIKE 'task_task' or tr.name LIKE 'task_task'-- enter the wanted table
+WHERE tp.name like @TableName or tr.name like  @TableName-- enter the wanted table
 ORDER BY 2,5;
