@@ -1,13 +1,16 @@
+
 DECLARE @TableName nvarchar(100)
-SET @TableName = '%Table_Name%'
+SET @TableName = '%airline%'
 
 
 SELECT
     fk.name 'FK Name',
     tp.name 'Parent table',
-    cp.name, cp.column_id,
+    cp.name as 'Parent col name', 
+	cp.column_id as 'Parent col order #',
     tr.name 'Refrenced table',
-    cr.name, cr.column_id
+    cr.name as 'Refrenced col name', 
+	cr.column_id as 'Refrenced col order #'
 FROM 
     sys.foreign_keys fk
 INNER JOIN 
@@ -20,5 +23,5 @@ INNER JOIN
     sys.columns cp ON fkc.parent_column_id = cp.column_id AND fkc.parent_object_id = cp.object_id
 INNER JOIN 
     sys.columns cr ON fkc.referenced_column_id = cr.column_id AND fkc.referenced_object_id = cr.object_id
-WHERE tp.name like @TableName or tr.name like  @TableName-- enter the wanted table
+WHERE tp.name like @TableName or tr.name like  @TableName
 ORDER BY 2,5;
