@@ -7,10 +7,10 @@ SELECT
     fk.name 'FK Name',
     tp.name 'Parent table',
     cp.name as 'Parent col name', 
-	cp.column_id as 'Parent col order #',
+    cp.column_id as 'Parent col order #',
     tr.name 'Refrenced table',
     cr.name as 'Refrenced col name', 
-	cr.column_id as 'Refrenced col order #'
+    cr.column_id as 'Refrenced col order #'
 FROM 
     sys.foreign_keys fk
 INNER JOIN 
