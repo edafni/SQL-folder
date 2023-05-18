@@ -1,6 +1,6 @@
 
 DECLARE @TableName nvarchar(100)
-SET @TableName = '%airline%'
+SET @TableName = '%TableName%' ---- or part of the name
 
 
 SELECT
