@@ -1,7 +1,7 @@
 
 
 declare @tableName varchar(100)
-set @tableName = 'flights'
+set @tableName = 'TableName'
 Select  
 TABLE_NAME
 , Stuff(
